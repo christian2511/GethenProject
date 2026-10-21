@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel | The Ekumen Report</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@500;700;900&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVIGATION BAR — same on every page. "current" marks this page.
+       ================================================================ -->
+  <header class="navbar">
+    <div class="nav-inner">
+
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-main">EKUMEN</span>
+        <span class="nav-logo-sub">Gethen Report</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="government.html">Government</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="travel.html" class="current">Travel</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+
+    </div>
+  </header>
+
+
+  <!-- ================================================================
+       PAGE HEADER
+       ================================================================ -->
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow">TOURIST INFORMATION</p>
+      <h1>Visit Gethen</h1>
+      <p class="page-header-subtitle">Locations, regions, and survival essentials for Karhide, Orgoreyn, and the ice.</p>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       QUICK NAV — jump links to the sections further down THIS page.
+       ================================================================ -->
+  <nav class="quick-nav">
+    <ul class="container quick-nav-links">
+      <li><a href="#map">Map</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#travel-guide">Travel Guide</a></li>
+      <li><a href="#ice-survival">Ice Survival</a></li>
+      <li><a href="#tourism-posters">Discover Gethen</a></li>
+    </ul>
+  </nav>
+
+
+
+  <!-- ================================================================
+       ================================================================
+       TRAVEL SECTION
+       Contains: Map, Destinations, Travel Guide, Ice Survival,
+       Tourism Posters
+       ================================================================
+       ================================================================ -->
+  <section class="section section-dark travel-section">
+    <div class="container">
+
+      <!-- ---------- INTERACTIVE MAP OF GETHEN ----------
+           All the pin data (name, position, description, chapter...)
+           lives in ONE list near the top of map.js — open that file
+           and search "PINS LIST" to add, remove, or edit a marker.
+           This <svg> only draws the map ARTWORK (coastline, mountains,
+           river, ice, compass, title plate). map.js fills the empty
+           <g id="mapPins"> group below with the actual clickable pins.
+           -------------------------------- -->
+      <div class="subsection map-section" id="map">
+        <h3 class="subsection-title">Map of Gethen</h3>
+        <p class="map-intro">Click a marker to explore Gethen's destinations, from the halls of Erhenrang to the endless Gobrin Ice.</p>
+
+        <!-- ---------- LEGEND + ZOOM/PAN/EDIT CONTROLS ----------
+             To add a 5th pin type, add a matching .map-legend-item
+             here AND a matching .map-pin-* rule in style.css. -->
+        <div class="map-toolbar">
+          <ul class="map-legend">
+            <li class="map-legend-item"><span class="map-legend-swatch legend-city"></span> City</li>
+            <li class="map-legend-item"><span class="map-legend-swatch legend-sacred"></span> Sacred Place</li>
+            <li class="map-legend-item"><span class="map-legend-swatch legend-dangerous"></span> Dangerous Place</li>
+            <li class="map-legend-item"><span class="map-legend-swatch legend-landmark"></span> Natural Landmark</li>
+          </ul>
+
+          <div class="map-controls">
+            <button type="button" class="btn-map-control" id="mapZoomOut" aria-label="Zoom out">&minus;</button>
+            <button type="button" class="btn-map-control" id="mapZoomIn" aria-label="Zoom in">+</button>
+            <button type="button" class="btn-map-control" id="mapReset" aria-label="Reset map view">Reset</button>
+            <label class="map-edit-toggle">
+              <input type="checkbox" id="mapEditMode">
+              Edit Mode
+            </label>
+          </div>
+        </div>
+
+        <!-- ---------- THE MAP ITSELF ---------- -->
+        <div class="map-wrap" id="mapWrap">
+          <svg
+            id="gethenMap"
+            class="map-svg"
+            viewBox="0 0 900 991"
+            width="900"
+            height="991"
+            preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label="Map of Gethen showing Orgoreyn, Karhide, Mishnory, Ehrenrang, the Kargav Mountains, the River Sess, Sinoth Valley, and the Gobrin Ice">
+
+            <image href="images/gethen-map.png" x="0" y="0" width="900" height="991" preserveAspectRatio="xMidYMid meet"></image>
+
+            <!-- Pins get added here automatically by map.js — don't
+                 hand-edit this group, edit the PINS list instead. -->
+            <g id="mapPins"></g>
+
+          </svg>
+
+          <!-- Shows "x: ___, y: ___" after a click, while Edit Mode is on -->
+          <div class="map-edit-readout" id="mapEditReadout" hidden></div>
+
+          <!-- Info card — map.js fills this in and shows/hides it -->
+          <div class="map-info-card" id="mapInfoCard" hidden>
+            <button type="button" class="map-info-close" id="mapInfoClose" aria-label="Close">&times;</button>
+            <p class="map-info-region" id="mapInfoRegion"></p>
+            <h4 id="mapInfoName"></h4>
+            <p id="mapInfoDescription"></p>
+            <p class="map-info-label">Why Visit</p>
+            <p id="mapInfoWhy"></p>
+            <p class="map-info-label">Travel Tip</p>
+            <p id="mapInfoTip"></p>
+            <p class="map-info-chapter" id="mapInfoChapter"></p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ---------- DESTINATIONS ----------
+           To add a destination: copy one whole <div class="destination-card">
+           block and edit it. To remove one, delete its block. -->
+      <div class="subsection" id="destinations">
+        <h3 class="subsection-title">Destinations</h3>
+        <div class="destination-grid">
+          <div class="destination-card">
+            <img src="images/dest-erhenrang.svg" alt="Illustration of Erhenrang" class="destination-image">
+            <div class="destination-body">
+              <h4>Erhenrang</h4>
+              <p class="destination-region">Karhide</p>
+              <p>The capital of Karhide, a city of steep stone roofs built to shed heavy snow and the seat of King Argaven XV's court.</p>
+              <a href="#map" class="btn btn-small">Find on Map</a>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="images/dest-mishnory.svg" alt="Illustration of Mishnory" class="destination-image">
+            <div class="destination-body">
+              <h4>Mishnory</h4>
+              <p class="destination-region">Orgoreyn</p>
+              <p>The largest city on Gethen and the capital of Orgoreyn, administered by the thirty-three Commensals.</p>
+              <a href="#map" class="btn btn-small">Find on Map</a>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="images/dest-otherhord.svg" alt="Illustration of The Fastness of Otherhord" class="destination-image">
+            <div class="destination-body">
+              <h4>The Fastness of Otherhord</h4>
+              <p class="destination-region">Karhide</p>
+              <p>A remote Handdarata retreat where the Foretellers live and practice.</p>
+              <a href="#map" class="btn btn-small">Find on Map</a>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="images/dest-gobrin-ice.svg" alt="Illustration of The Gobrin Ice" class="destination-image">
+            <div class="destination-body">
+              <h4>The Gobrin Ice</h4>
+              <p class="destination-region">The Ice</p>
+              <p>A vast glacier covering much of northern Gethen.</p>
+              <a href="#map" class="btn btn-small">Find on Map</a>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="images/dest-rer.svg" alt="Illustration of Rer" class="destination-image">
+            <div class="destination-body">
+              <h4>Rer</h4>
+              <p class="destination-region">Karhide</p>
+              <p>The old capital of Karhide, known for its ancient Fastnesses.</p>
+              <a href="#map" class="btn btn-small">Find on Map</a>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="images/dest-sinoth-valley.svg" alt="Illustration of Sinoth Valley" class="destination-image">
+            <div class="destination-body">
+              <h4>Sinoth Valley</h4>
+              <p class="destination-region">Disputed Border</p>
+              <p>A fertile valley along the Karhide-Orgoreyn border, claimed by both nations.</p>
+              <a href="#map" class="btn btn-small">Find on Map</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ---------- TRAVEL GUIDE ---------- -->
+      <div class="subsection" id="travel-guide">
+        <h3 class="subsection-title">Interstellar Travel Guide to Gethen (Winter)</h3>
+        <p class="guide-intro">Gethen—designated Winter in Hainish Ekumen reports—is a harsh, ice-bound world inhabited by ambisexual humans. This guide covers its two dominant nations: Karhide and Orgoreyn.</p>
+
+        <div class="compare-grid">
+
+          <div class="compare-column compare-karhide">
+            <h4>KARHIDE</h4>
+            <p class="guide-lead">A fragmented, feudal realm of deep-rooted clan loyalties, ancient customs, and dramatic mountain scenery. One of the oldest stable civilizations on the planet.</p>
+            <dl class="compare-list">
+              <dt>History</dt>
+              <dd>Populations grew organically out of family clans and hearth-societies along mountain passes. This fostered a decentralized political structure directed by a King and a Prime Minister, with ultimate authority balanced by the regional Domains.</dd>
+              <dt>Why Important</dt>
+              <dd>Karhide is the emotional and cultural seat of Gethenian traditionalism. Crucially, it is the nation where the Ekumen made historic first contact, testing whether an ambisexual human society could integrate into galactic civilization.</dd>
+              <dt>Significant Construction</dt>
+              <dd>To survive ferocious sub-zero winters, architecture relies heavily on immense stone fortifications, thick walls, and communal hearth-living. Key landmarks include the ancient royal city of Sinth Herval and isolated cliff-side sanctuaries like Sator Hawi.</dd>
+              <dt>Expression</dt>
+              <dd>Karhide speech is poetic and elaborate, layered with double meanings, political maneuvering, and legalistic nuances. Art and dance are deeply intertwined with seasonal festivals and clan pride.</dd>
+              <dt>Sights</dt>
+              <dd>Towering mountain ranges, winding glacier valleys, and historic hearth-towns nestled deep in alpine passes.</dd>
+              <dt>Activities</dt>
+              <dd>Participate in seasonal clan meetings, master the political art of local debate, or embark on guided ice treks across high mountain passes.</dd>
+              <dt>To Eat</dt>
+              <dd>Hearty winter fare consisting of smoked river fish, pickled root vegetables, dense barley breads, and hot, spiced brewed beverages to beat the bitter cold.</dd>
+              <dt>Accommodations</dt>
+              <dd>Traditional clan hearth-inns where travelers share a communal blaze, swap stories, and find shelter from howling storms.</dd>
+            </dl>
+          </div>
+
+          <div class="compare-column compare-orgoreyn">
+            <h4>ORGOREYN</h4>
+            <p class="guide-lead">A vast, highly organized, and industrialized state on a sweeping plateau. In sharp contrast to Karhide's feudal clans, Orgoreyn is governed by a council of thirty-three Commensals who oversee a unified collective bureaucracy.</p>
+            <dl class="compare-list">
+              <dt>History</dt>
+              <dd>Evolving from a federation of agricultural and industrial communes, Orgoreyn modernized rapidly through centralized planning, massive public works, and collective labor.</dd>
+              <dt>Why Important</dt>
+              <dd>Orgoreyn represents the pinnacle of Gethenian mass organization, social engineering, and economic production. Its tense ideological rivalry with Karhide shapes modern Gethenian geopolitics.</dd>
+              <dt>Significant Construction</dt>
+              <dd>Dominated by utilitarian architecture, sprawling collective farms, vast factory complexes, and massive subterranean or heavily insulated housing blocks designed to efficiently shelter large workforces.</dd>
+              <dt>Expression</dt>
+              <dd>Official state communication values clarity, collective productivity, and ideological harmony, though it is underlaid by a labyrinth of secret police, rival factions, and silent purges (notably the Farm work camps).</dd>
+              <dt>Sights</dt>
+              <dd>Sweeping mechanized agricultural plains, monolithic municipal government seats, and glowing industrial hubs standing out against the frozen wasteland.</dd>
+              <dt>Activities</dt>
+              <dd>Tour state-run industrial cooperatives, study advanced municipal planning, or observe government-sponsored cultural festivals.</dd>
+              <dt>To Eat</dt>
+              <dd>Standardized, highly nutritious communal meals featuring processed grains, protein pastes, root vegetable stews, and fermented drinks served in vast communal dining halls.</dd>
+              <dt>Accommodations</dt>
+              <dd>Functional, state-run municipal dormitories and traveler hostels offering clean, uniform rooms with standard municipal services.</dd>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ---------- ICE SURVIVAL ----------
+           To add/remove a card, copy or delete one <div class="survival-card"> block. -->
+      <div class="subsection" id="ice-survival">
+        <h3 class="subsection-title">Surviving the Ice</h3>
+
+        <div class="survival-grid">
+          <div class="survival-card">
+            <h4>GEAR</h4>
+            <ul>
+              <li>Sledge &amp; harness for transport</li>
+              <li>Double-walled tent</li>
+              <li>Layered furs</li>
+              <li>Camp stove (for melting water)</li>
+              <li>Snowshoes</li>
+              <li>Rope</li>
+              <li>Ice axes</li>
+            </ul>
+          </div>
+          <div class="survival-card">
+            <h4>MOVEMENT &amp; SAFETY</h4>
+            <ul>
+              <li>Pace yourself to avoid sweating (sweat causes hypothermia)</li>
+              <li>Stay roped together over crevasses</li>
+              <li>Stop immediately during whiteouts</li>
+            </ul>
+          </div>
+          <div class="survival-card">
+            <h4>HEALTH &amp; NUTRITION</h4>
+            <ul>
+              <li>Consume high-calorie rations</li>
+              <li>Wear slitted goggles to prevent snow blindness</li>
+              <li>Stick to a strict daily routine to combat sensory deprivation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ---------- TOURISM POSTERS: DISCOVER GETHEN ----------
+           To add/remove a poster, copy or delete one <div class="poster-card"> block. -->
+      <div class="subsection" id="tourism-posters">
+        <h3 class="subsection-title">Discover Gethen</h3>
+
+        <div class="poster-grid">
+
+          <div class="poster-card">
+            <div class="image-placeholder poster-image">
+              <span>[ Placeholder poster — images/poster-1.jpg ]</span>
+            </div>
+            <p class="poster-label">DESTINATION 01</p>
+            <h4 class="placeholder-text">[Placeholder: destination name]</h4>
+            <p class="poster-slogan placeholder-text">[Placeholder: slogan]</p>
+            <p class="placeholder-text">[Placeholder: short description]</p>
+          </div>
+
+          <div class="poster-card">
+            <div class="image-placeholder poster-image">
+              <span>[ Placeholder poster — images/poster-2.jpg ]</span>
+            </div>
+            <p class="poster-label">DESTINATION 02</p>
+            <h4 class="placeholder-text">[Placeholder: destination name]</h4>
+            <p class="poster-slogan placeholder-text">[Placeholder: slogan]</p>
+            <p class="placeholder-text">[Placeholder: short description]</p>
+          </div>
+
+          <div class="poster-card">
+            <div class="image-placeholder poster-image">
+              <span>[ Placeholder poster — images/poster-3.jpg ]</span>
+            </div>
+            <p class="poster-label">DESTINATION 03</p>
+            <h4 class="placeholder-text">[Placeholder: destination name]</h4>
+            <p class="poster-slogan placeholder-text">[Placeholder: slogan]</p>
+            <p class="placeholder-text">[Placeholder: short description]</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="government.html">Government</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="travel.html">Travel</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+      <p>The Ekumen Report &middot; Gethen Field Study &middot; Student Project</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Map script — only loaded on this page, so it can't affect any other page. -->
+  <script src="map.js"></script>
+</body>
+</html>

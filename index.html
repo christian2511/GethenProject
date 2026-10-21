@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ekumen Report | Understanding Gethen</title>
+
+  <!-- ================================================================
+       FONTS
+       These two Google Fonts give the site its "sci-fi document" look.
+       "Space Grotesk" = headings. "Inter" = body text.
+       Delete this whole <link> tag if you don't want to use Google Fonts
+       (the site will just fall back to a normal system font).
+       ================================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@500;700;900&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Our stylesheet. All colors, sizes, and layout live in here. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVIGATION BAR
+       This is the SAME navbar on every page (index.html, government.html,
+       culture.html, travel.html, sources.html) — copy/paste it if you add
+       a new page. The "current" class just highlights which page you're on;
+       move it to a different link on each page.
+       To add a link: copy one <li><a>...</a></li> line and change it.
+       To remove a link: delete its <li>...</li> line.
+       ================================================================ -->
+  <header class="navbar">
+    <div class="nav-inner">
+
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-main">EKUMEN</span>
+        <span class="nav-logo-sub">Gethen Report</span>
+      </a>
+
+      <!-- Hamburger button, only visible on phones/tablets (see script.js) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="current">Home</a></li>
+        <li><a href="government.html">Government</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="travel.html">Travel</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+
+    </div>
+  </header>
+
+
+  <!-- ================================================================
+       HERO SECTION
+       The big introduction banner at the top of the page.
+       ================================================================ -->
+  <section class="hero" id="home">
+
+    <!-- ---------- HERO IMAGE ----------
+         To use your own photo instead of the placeholder box:
+         1. Put an image file in the images/ folder, e.g. images/gethen-hero.jpg
+         2. Delete the <div class="image-placeholder hero-image"> block below
+         3. Replace it with:
+            <img src="images/gethen-hero.jpg" alt="Icy landscape of Gethen" class="hero-image">
+         -------------------------------- -->
+    <div class="image-placeholder hero-image">
+      <span>[ Placeholder: hero image ]</span>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="eyebrow">Gethen Field Study</p>
+      <h1>The Ekumen Report</h1>
+      <p class="hero-subtitle">
+        Understanding Gethen
+      </p>
+      <a href="#categories" class="btn btn-primary">Explore the Report</a>
+    </div>
+
+  </section>
+
+
+  <!-- ================================================================
+       MISSION / INTRODUCTION SECTION
+       Introduces the project's essential question.
+       ================================================================ -->
+  <section class="section mission" id="mission">
+    <div class="container">
+      <p class="eyebrow">OUR MISSION</p>
+      <h2 class="essential-question">
+        "How can we, as representatives of the Ekumen, promote understanding and evaluate the ability of Terrans to constructively engage with Gethen?"
+      </h2>
+
+      <p class="placeholder-text">[Placeholder: short project summary]</p>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       THREE MAIN CATEGORY CARDS
+       This is the site's main navigation. Each card is a link to its own
+       page. To add a 4th card: copy one whole <a class="category-card">
+       block, point its href at a new .html page, and build that page by
+       copying government.html/culture.html/travel.html as a starting point.
+       ================================================================ -->
+  <section class="section categories" id="categories">
+    <div class="container category-grid">
+
+      <a href="government.html" class="category-card">
+        <span class="category-number">01</span>
+        <h3>Government</h3>
+        <p>Diplomatic Readiness &amp; Political Relations</p>
+      </a>
+
+      <a href="culture.html" class="category-card">
+        <span class="category-number">02</span>
+        <h3>Culture</h3>
+        <p>Anthropology, Faith &amp; Physiology</p>
+      </a>
+
+      <a href="travel.html" class="category-card">
+        <span class="category-number">03</span>
+        <h3>Travel</h3>
+        <p>Explore and Survive Gethen</p>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONCLUSION SECTION
+       Large closing statement, returns to the essential question.
+       ================================================================ -->
+  <section class="section conclusion" id="conclusion">
+    <div class="container">
+      <h2 class="conclusion-title">[Placeholder: closing statement]</h2>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       The link row here is repeated on every page so you can always
+       jump anywhere from the bottom of the site.
+       ================================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="government.html">Government</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="travel.html">Travel</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+      <p>The Ekumen Report &middot; Gethen Field Study &middot; Student Project</p>
+    </div>
+  </footer>
+
+
+  <!-- Our JavaScript file. Only handles the mobile menu button. -->
+  <script src="script.js"></script>
+</body>
+</html>

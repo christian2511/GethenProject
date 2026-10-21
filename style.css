@@ -1,0 +1,1877 @@
+/* ====================================================================
+   GETHEN REPORT — STYLESHEET
+   ====================================================================
+   HOW THIS FILE IS ORGANIZED:
+   1. VARIABLES        — change colors/sizes/spacing for the WHOLE site here
+   2. RESET & BASE      — global defaults
+   3. REUSABLE PIECES   — buttons, placeholders, containers (used everywhere)
+   4. ONE SECTION AT A TIME, in the same order they appear on the page
+
+   TIP: Press Ctrl+F and search a section name in capital letters
+   (e.g. "RELIGION SECTION") to jump straight to it.
+   ==================================================================== */
+
+
+/* ====================================================================
+   1. VARIABLES
+   Change a value here and it updates EVERYWHERE that variable is used.
+   ==================================================================== */
+:root {
+
+  /* ---------- COLORS ---------- */
+  --dark-navy:    #0b1725;   /* main dark background color */
+  --deep-blue:    #13293f;   /* slightly lighter dark background */
+  --blue-gray:    #4a6378;   /* muted blue-gray, used for borders/text */
+  --ice-blue:     #a9d3e8;   /* light icy blue accent */
+  --pale-ice:     #eaf3f9;   /* very light background color */
+  --white:        #ffffff;
+  --light-gray:   #d5dde3;
+  --text-color:   #1c2b39;   /* main body text color (on light backgrounds) */
+  --text-light:   #eef4f9;   /* main body text color (on dark backgrounds) */
+  --accent-warm:  #d98c4a;   /* small warm accent color — use sparingly */
+
+  /* ---------- FONTS ---------- */
+  --font-heading: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-body:    'Inter', Arial, sans-serif;
+
+  /* ---------- TEXT SIZES ----------
+     Change these to resize text across the ENTIRE site at once. */
+  --title-size:      3.4rem;   /* huge hero title */
+  --heading-size:    2.1rem;   /* section headings, e.g. "OUR MISSION" */
+  --subheading-size: 1.3rem;   /* card titles, subsection headings */
+  --body-size:       1rem;     /* normal paragraph text */
+
+  /* ---------- SPACING ----------
+     Change this ONE value to make every section more/less tall. */
+  --section-spacing: 100px;
+
+  /* ---------- SHARED SHAPES ---------- */
+  --card-radius: 10px;
+  --max-width: 1200px;         /* how wide the page content can get */
+}
+
+
+/* ====================================================================
+   2. RESET & BASE
+   Basic defaults so the browser doesn't add weird default spacing.
+   ==================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;   /* makes clicking nav links scroll smoothly */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  color: var(--text-color);
+  background-color: var(--white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+
+/* ====================================================================
+   3. REUSABLE PIECES
+   These classes are used across many different sections.
+   ==================================================================== */
+
+/* Centers content and keeps it from getting too wide on big screens */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Every full-width page section uses this for consistent top/bottom spacing.
+   Change --section-spacing above to adjust ALL sections at once. */
+.section {
+  padding: var(--section-spacing) 0;
+}
+
+/* Dark version of a section (used for Government + Travel) */
+.section-dark {
+  background-color: var(--dark-navy);
+  color: var(--text-light);
+}
+
+/* Small label that sits above a heading, e.g. "OUR MISSION" */
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--blue-gray);
+  margin-bottom: 12px;
+}
+
+.section-dark .eyebrow {
+  color: var(--ice-blue);
+}
+
+.section-title {
+  font-size: var(--heading-size);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: inherit;
+}
+
+.subsection-title {
+  font-size: var(--subheading-size);
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ice-blue);
+  display: inline-block;
+}
+
+/* A block of "big quote" text, used for the essential question */
+.essential-question {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 0 24px 0;
+  color: inherit;
+}
+
+/* Anything wrapped in this class is meant to be replaced later.
+   The dashed underline + color make placeholder text obvious. */
+.placeholder-text {
+  color: var(--blue-gray);
+  font-style: italic;
+}
+.section-dark .placeholder-text {
+  color: var(--ice-blue);
+}
+
+.placeholder-list {
+  padding-left: 20px;
+  list-style: disc;
+  margin-bottom: 12px;
+}
+.placeholder-list li {
+  display: list-item;
+}
+
+/* Separates one block of content from the next inside a big section.
+   Change margin-bottom below to add more/less space between subsections. */
+.subsection {
+  margin-bottom: 80px;
+}
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  padding: 16px 36px;
+  border-radius: 4px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn-primary {
+  background-color: var(--ice-blue);
+  color: var(--dark-navy);
+}
+.btn-primary:hover {
+  background-color: var(--white);
+}
+.btn-small {
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  background-color: var(--dark-navy);
+  color: var(--text-light);
+}
+.btn-small:hover {
+  background-color: var(--blue-gray);
+}
+
+/* ---------- IMAGE PLACEHOLDERS ----------
+   Used anywhere a real photo isn't available yet.
+   Once you add a real <img>, this class is no longer needed for that spot. */
+.image-placeholder {
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--blue-gray) 50%, var(--ice-blue) 100%);
+  border: 2px dashed var(--ice-blue);
+  border-radius: var(--card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  padding: 20px;
+  min-height: 200px;
+}
+
+/* ---------- REPORT / RESEARCH GRID ----------
+   Used in Government, Travel Guide, etc. for the little labeled boxes.
+   Change "repeat(2, 1fr)" to "repeat(3, 1fr)" for 3 columns instead of 2. */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0;
+}
+.report-block h4 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: var(--ice-blue);
+}
+.section:not(.section-dark) .report-block h4,
+.section:not(.section-dark) .report-findings h4 {
+  color: var(--deep-blue);
+}
+
+
+/* ====================================================================
+   NAVIGATION BAR
+   ==================================================================== */
+.navbar {
+  position: sticky;   /* keeps the bar stuck to the top while scrolling */
+  top: 0;
+  z-index: 100;
+  background-color: var(--dark-navy);
+  border-bottom: 1px solid var(--blue-gray);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.nav-logo-main {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+.nav-logo-sub {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--ice-blue);
+}
+
+/* Change "gap: 36px" to add more/less space between nav links */
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+.nav-links a {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+  transition: color 0.15s ease;
+}
+.nav-links a:hover {
+  color: var(--ice-blue);
+}
+
+/* Marks which page you're currently on (put class="current" on ONE link
+   in the nav-links list of each page). */
+.nav-links a.current {
+  color: var(--ice-blue);
+  font-weight: 700;
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile (see media query) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background-color: var(--white);
+  border-radius: 2px;
+}
+
+
+/* ====================================================================
+   PAGE HEADER
+   The small "mini hero" banner at the top of every page EXCEPT Home
+   (government.html, culture.html, travel.html, sources.html).
+   Change padding below to make it taller/shorter.
+   ==================================================================== */
+.page-header {
+  background-color: var(--dark-navy);
+  color: var(--text-light);
+  text-align: center;
+  padding: 64px 0 56px 0;
+}
+.page-header .eyebrow {
+  color: var(--ice-blue);
+  justify-content: center;
+}
+.page-header h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.page-header-subtitle {
+  color: var(--light-gray);
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+
+/* ====================================================================
+   QUICK NAV (the row of pill links just under the page header)
+   Lets you jump straight to a section further down the SAME page.
+   Stays stuck below the main navbar while you scroll ("sticky").
+   If you ever change the navbar's height, adjust "top: 73px" below
+   so this bar still sits flush underneath it.
+   ==================================================================== */
+.quick-nav {
+  position: sticky;
+  top: 73px;
+  z-index: 90;
+  background-color: var(--pale-ice);
+  border-bottom: 1px solid var(--light-gray);
+  padding: 16px 0;
+}
+.quick-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.quick-nav-links a {
+  display: inline-block;
+  background-color: var(--white);
+  border: 1px solid var(--blue-gray);
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--text-color);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.quick-nav-links a:hover {
+  background-color: var(--ice-blue);
+  border-color: var(--ice-blue);
+}
+
+
+/* ====================================================================
+   HERO SECTION
+   ==================================================================== */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: var(--white);
+}
+
+/* The placeholder image fills the entire hero area behind the text.
+   Change "min-height: 92vh" above to make the hero taller/shorter.
+   Its label is pinned to the bottom (not centered) so it doesn't
+   overlap the hero title/subtitle, which are centered on top of it. */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  border: none;
+  min-height: 100%;
+  align-items: flex-end;
+  padding-bottom: 24px;
+  opacity: 0.8;
+}
+
+/* Darkens the image slightly so the white text stays readable.
+   Adjust the "0.45" number (0 = no darkening, 1 = fully black) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(11, 23, 37, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 0 24px;
+}
+.hero-content .eyebrow {
+  color: var(--ice-blue);
+  justify-content: center;
+}
+.hero-content h1 {
+  font-size: var(--title-size);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.hero-subtitle {
+  font-size: 1.15rem;
+  margin-bottom: 36px;
+  color: var(--light-gray);
+}
+
+
+/* ====================================================================
+   MISSION SECTION
+   ==================================================================== */
+.mission {
+  background-color: var(--pale-ice);
+  text-align: center;
+}
+.mission .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mission .placeholder-text {
+  max-width: 700px;
+}
+
+
+/* ====================================================================
+   THREE CATEGORY CARDS
+   ==================================================================== */
+/* Change "repeat(3, 1fr)" to "repeat(2, 1fr)" to show 2 per row instead */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.category-card {
+  display: block;
+  background-color: var(--deep-blue);
+  color: var(--text-light);
+  border-radius: var(--card-radius);
+  padding: 40px 32px;
+  border: 1px solid var(--blue-gray);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.category-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--ice-blue);
+}
+.category-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ice-blue);
+  display: block;
+  margin-bottom: 12px;
+}
+.category-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.category-card p {
+  color: var(--light-gray);
+}
+
+
+/* ====================================================================
+   GOVERNMENT SECTION
+   ==================================================================== */
+/* Each report ("Terran Readiness", "Gethenian Readiness", etc.) sits in one
+   of these cards. Change background-color below to recolor all of them. */
+.report-card {
+  background-color: var(--deep-blue);
+  border: 1px solid var(--blue-gray);
+  border-radius: var(--card-radius);
+  padding: 36px;
+  margin-bottom: 32px;
+}
+.report-card:last-child {
+  margin-bottom: 0;
+}
+.report-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.report-findings {
+  border-top: 1px solid var(--blue-gray);
+  padding-top: 20px;
+  margin-top: 8px;
+}
+.report-findings h4 {
+  color: var(--ice-blue);
+  margin-bottom: 6px;
+}
+
+/* Karhide/Orgoreyn briefing gets a small warm-colored left edge
+   to make it feel like an "urgent intelligence report" */
+.intel-briefing {
+  border-left: 4px solid var(--accent-warm);
+}
+
+
+/* ====================================================================
+   CULTURE SECTION
+   ==================================================================== */
+
+/* ---------- COMPARISON: KARHIDE VS ORGOREYN ----------
+   Change "1fr 1fr" to stack the two columns differently,
+   or change "grid-template-columns" entirely for a different layout. */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.compare-column {
+  background-color: var(--pale-ice);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  border-top: 4px solid var(--blue-gray);
+}
+/* Give each country its own accent color along the top edge */
+.compare-karhide {
+  border-top-color: var(--ice-blue);
+}
+.compare-orgoreyn {
+  border-top-color: var(--accent-warm);
+}
+.compare-column h4 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.compare-list dt {
+  font-weight: 600;
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--blue-gray);
+}
+.compare-list dt:first-child {
+  margin-top: 0;
+}
+.compare-list dd {
+  margin-top: 2px;
+}
+
+.callout-box {
+  background-color: var(--dark-navy);
+  color: var(--text-light);
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
+}
+.callout-box h4 {
+  color: var(--ice-blue);
+  margin-bottom: 8px;
+}
+
+/* ---------- RELIGION: HANDDARA & YOMESH ---------- */
+/* Change "1fr 1fr" to "1fr" to stack the two belief cards instead of
+   showing them side by side */
+.belief-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.belief-card {
+  background-color: var(--pale-ice);
+  border-radius: var(--card-radius);
+  padding: 32px;
+}
+.belief-card h4 {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: var(--deep-blue);
+}
+.belief-block {
+  margin-bottom: 16px;
+}
+.belief-block:last-child {
+  margin-bottom: 0;
+}
+.belief-block h5 {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--blue-gray);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+/* ---------- FOOD: TASTE OF GETHEN ----------
+   Change "1fr 1fr" below to "1fr" to stack the photo above the text
+   instead of side-by-side (good for narrow layouts). */
+.recipe-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+.recipe-image {
+  min-height: 320px;
+}
+.recipe-text h4 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+.recipe-text h5 {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue-gray);
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+/* ---------- PHYSIOLOGY: UNDERSTANDING KEMMER ---------- */
+.kemmer-image {
+  min-height: 260px;
+  margin-bottom: 32px;
+}
+
+/* The stage timeline. Change "flex-direction: column" to "row" to lay
+   the stages out sideways instead of top-to-bottom. */
+.kemmer-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.kemmer-stage {
+  background-color: var(--pale-ice);
+  border: 1px solid var(--ice-blue);
+  border-radius: 30px;
+  padding: 12px 32px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+.kemmer-arrow {
+  font-size: 1.3rem;
+  color: var(--blue-gray);
+}
+
+/* ---------- CULTURAL NARRATIVE: STORIES OF GETHEN ---------- */
+.story-box {
+  background-color: var(--pale-ice);
+  border-left: 4px solid var(--ice-blue);
+  border-radius: var(--card-radius);
+  padding: 36px;
+  max-width: 850px;
+}
+.story-box h4 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.story-box h5 {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue-gray);
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+
+/* ====================================================================
+   TRAVEL SECTION
+   ==================================================================== */
+.travel-subtitle {
+  color: var(--ice-blue);
+  font-size: 1.1rem;
+  margin-top: -24px;
+  margin-bottom: 48px;
+}
+
+/* ---------- DESTINATION CARDS ----------
+   Change "repeat(3, 1fr)" to "repeat(2, 1fr)" for 2 cards per row. */
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.destination-card {
+  background-color: var(--deep-blue);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid var(--blue-gray);
+}
+.destination-image {
+  min-height: 180px;
+  border-radius: 0;
+  border: none;
+}
+.destination-body {
+  padding: 24px;
+}
+.destination-body h4 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+.destination-region {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ice-blue);
+  margin-bottom: 12px;
+}
+.destination-body p:not(.destination-region) {
+  margin-bottom: 18px;
+}
+
+/* ---------- ICE SURVIVAL ----------
+   Change "repeat(3, 1fr)" to "repeat(2, 1fr)" for 2 cards per row. */
+.survival-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.survival-card {
+  background-color: var(--deep-blue);
+  border: 1px solid var(--accent-warm);
+  border-radius: var(--card-radius);
+  padding: 24px;
+}
+.survival-card h4 {
+  color: var(--accent-warm);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+/* ---------- TOURISM POSTERS: DISCOVER GETHEN ----------
+   Change "repeat(3, 1fr)" to "repeat(1, 1fr)" to stack posters full-width. */
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.poster-card {
+  text-align: center;
+}
+.poster-image {
+  min-height: 340px;
+  margin-bottom: 18px;
+}
+.poster-label {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--ice-blue);
+  margin-bottom: 6px;
+}
+.poster-card h4 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.poster-slogan {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+
+/* ====================================================================
+   CONCLUSION SECTION
+   ==================================================================== */
+.conclusion {
+  background-color: var(--dark-navy);
+  color: var(--white);
+  text-align: center;
+  padding: 160px 0;   /* extra tall for a "cinematic" closing feel */
+}
+.conclusion-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
+}
+.conclusion .essential-question {
+  margin: 0 auto 24px auto;
+  color: var(--ice-blue);
+}
+.conclusion .placeholder-text {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
+/* ====================================================================
+   SOURCES SECTION
+   ==================================================================== */
+.sources {
+  background-color: var(--pale-ice);
+}
+.sources-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+.sources-list li:last-child {
+  border-bottom: none;
+}
+
+
+/* ====================================================================
+   CREDITS SECTION
+   ==================================================================== */
+/* Change "repeat(2, 1fr)" if you add more teammates, e.g.
+   "repeat(3, 1fr)" for three people across. */
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.credit-card {
+  background-color: var(--pale-ice);
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
+}
+.credit-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+
+/* ====================================================================
+   FOOTER
+   ==================================================================== */
+.footer {
+  background-color: var(--dark-navy);
+  color: var(--blue-gray);
+  text-align: center;
+  padding: 28px 0;
+  font-size: 0.85rem;
+}
+
+/* Row of links so you can jump anywhere from the bottom of any page.
+   Change "gap: 24px" to add more/less space between the links. */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+.footer-links a {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--light-gray);
+}
+.footer-links a:hover {
+  color: var(--ice-blue);
+}
+
+
+/* ====================================================================
+   RESPONSIVE / MOBILE
+   Only two breakpoints on purpose, to keep this simple:
+   - 900px and below  = tablets
+   - 600px and below  = phones
+   ==================================================================== */
+
+@media (max-width: 900px) {
+
+  :root {
+    --title-size: 2.5rem;
+    --heading-size: 1.7rem;
+    --section-spacing: 70px;
+  }
+
+  /* Turn the nav links into a dropdown menu controlled by script.js */
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--dark-navy);
+    border-top: 1px solid var(--blue-gray);
+    display: none;   /* script.js toggles this open/closed */
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links li {
+    border-bottom: 1px solid var(--blue-gray);
+  }
+  .nav-links a {
+    display: block;
+    padding: 16px 32px;
+  }
+
+  .category-grid,
+  .destination-grid,
+  .survival-grid,
+  .poster-grid,
+  .credits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .compare-grid,
+  .belief-grid,
+  .recipe-layout,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+
+  :root {
+    --title-size: 2rem;
+    --heading-size: 1.5rem;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .category-grid,
+  .destination-grid,
+  .survival-grid,
+  .poster-grid,
+  .credits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .conclusion {
+    padding: 100px 0;
+  }
+}
+
+
+/* ====================================================================
+   ===== GETHEN MAP =====
+   Styles for the interactive SVG map on travel.html (the map markup
+   lives in travel.html, pins are drawn by map.js). Everything here
+   reuses the same color variables and fonts set at the top of this
+   file — change a --variable up there and the map updates too.
+   ==================================================================== */
+
+/* ---------- Short intro line above the map ---------- */
+.map-intro {
+  color: var(--light-gray);
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+
+/* ---------- Toolbar row: legend on the left, controls on the right.
+   Change "justify-content: space-between" to "center" to stack them
+   closer together instead. ---------- */
+.map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--light-gray);
+}
+/* The four little colored swatches — change a color here to match the
+   matching .map-pin-* rule further down. */
+.map-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.map-legend-swatch.legend-city {
+  background-color: var(--ice-blue);
+}
+.map-legend-swatch.legend-sacred {
+  background-color: var(--white);
+  border: 2px solid var(--ice-blue);
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+.map-legend-swatch.legend-dangerous {
+  background-color: var(--accent-warm);
+}
+.map-legend-swatch.legend-landmark {
+  background-color: var(--blue-gray);
+  border-radius: 3px;
+}
+
+.map-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Round +/- buttons. Change "width/height: 36px" to resize them. */
+.btn-map-control {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--blue-gray);
+  background-color: var(--deep-blue);
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.btn-map-control:hover {
+  background-color: var(--blue-gray);
+}
+#mapReset {
+  width: auto;
+  border-radius: 20px;
+  padding: 0 16px;
+  font-size: 0.8rem;
+}
+.map-edit-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--light-gray);
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* ---------- The map's frame ----------
+   Change "border-radius: var(--card-radius)" to match other cards,
+   or give it a fixed height instead of letting the SVG set it. */
+.map-wrap {
+  position: relative;
+  background-color: var(--deep-blue);
+  border: 1px solid var(--blue-gray);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+.map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: grab;
+  touch-action: none;   /* stops the phone's page from scrolling while dragging the map */
+}
+.map-wrap--dragging .map-svg {
+  cursor: grabbing;
+}
+
+/* ---------- Base map artwork (coastline, mountains, river, ice) ----------
+   These are all drawn as plain SVG shapes in travel.html; this just
+   colors them using the site's existing variables. */
+.map-sea {
+  fill: var(--ice-blue);
+  opacity: 0.25;
+}
+.map-land {
+  fill: var(--pale-ice);
+  stroke: var(--dark-navy);
+  stroke-width: 3;
+}
+.map-island {
+  fill: var(--pale-ice);
+  stroke: var(--dark-navy);
+  stroke-width: 2;
+}
+.map-mountain {
+  fill: var(--blue-gray);
+  stroke: var(--dark-navy);
+  stroke-width: 1;
+}
+.map-river {
+  fill: none;
+  stroke: var(--ice-blue);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.map-ice {
+  fill: var(--white);
+  stroke: var(--dark-navy);
+  stroke-width: 2;
+}
+.map-ice-hatch {
+  stroke: var(--light-gray);
+  stroke-width: 1;
+}
+.map-border-dispute {
+  fill: none;
+  stroke: var(--accent-warm);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+/* Big region names, e.g. "KARHIDE" / "ORGOREYN" */
+.map-region-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 3px;
+  fill: var(--dark-navy);
+  opacity: 0.45;
+  text-anchor: middle;
+}
+/* Smaller labels, e.g. "Sess River", "Kargav Mountains" */
+.map-feature-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--dark-navy);
+  opacity: 0.7;
+  text-anchor: middle;
+}
+
+/* ---------- Compass rose ---------- */
+.map-compass-line {
+  stroke: var(--dark-navy);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+.map-compass-point {
+  fill: var(--dark-navy);
+  opacity: 0.8;
+}
+.map-compass-label {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--dark-navy);
+  text-anchor: middle;
+}
+
+/* ---------- Title cartouche ("GETHEN (WINTER)" plate) ---------- */
+.map-cartouche-box {
+  fill: var(--pale-ice);
+  stroke: var(--dark-navy);
+  stroke-width: 2;
+}
+.map-cartouche-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  fill: var(--dark-navy);
+  text-anchor: middle;
+}
+.map-cartouche-subtitle {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 3px;
+  fill: var(--blue-gray);
+  text-anchor: middle;
+}
+
+/* ---------- Pins ----------
+   map.js builds one of these groups per entry in its PINS list.
+   Change a fill color below to recolor every pin of that type. */
+.map-pin {
+  cursor: pointer;
+}
+/* Invisible larger circle = the actual click/tap target, so pins are
+   easy to hit even though the visible shape is small. */
+.map-pin-hit {
+  r: 16px;
+  fill: transparent;
+}
+.map-pin-shape {
+  stroke: var(--dark-navy);
+  stroke-width: 2;
+  transition: transform 0.15s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.map-pin:hover .map-pin-shape,
+.map-pin:focus .map-pin-shape {
+  transform: scale(1.25);
+}
+.map-pin-city .map-pin-shape {
+  fill: var(--ice-blue);
+}
+.map-pin-sacred .map-pin-shape {
+  fill: var(--white);
+}
+.map-pin-dangerous .map-pin-shape {
+  fill: var(--accent-warm);
+}
+.map-pin-landmark .map-pin-shape {
+  fill: var(--blue-gray);
+}
+/* The little "!" drawn on top of dangerous pins */
+.map-pin-warning {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
+  fill: var(--dark-navy);
+  text-anchor: middle;
+  pointer-events: none;
+}
+/* The name label that fades in when you hover/focus a pin */
+.map-pin-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--text-light);
+  text-anchor: middle;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.map-pin:hover .map-pin-label,
+.map-pin:focus .map-pin-label {
+  opacity: 1;
+}
+
+/* Bigger tap targets on phones, since there's no hover there */
+@media (max-width: 600px) {
+  .map-pin-hit {
+    r: 26px;
+  }
+}
+
+/* ---------- Edit Mode coordinate readout ---------- */
+.map-edit-readout {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background-color: var(--dark-navy);
+  color: var(--ice-blue);
+  border: 1px solid var(--ice-blue);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+
+/* ---------- Info card (the popup shown when you click a pin) ----------
+   Change "width: 300px" to resize it, or "top/right: 16px" to move it. */
+.map-info-card {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 300px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 32px);
+  overflow-y: auto;
+  background-color: var(--dark-navy);
+  border: 1px solid var(--ice-blue);
+  border-radius: var(--card-radius);
+  padding: 24px;
+}
+.map-info-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--light-gray);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.map-info-close:hover {
+  color: var(--ice-blue);
+}
+.map-info-region {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ice-blue);
+  margin-bottom: 6px;
+}
+#mapInfoName {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+.map-info-label {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue-gray);
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+.map-info-chapter {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--blue-gray);
+  font-style: italic;
+  color: var(--light-gray);
+  font-size: 0.9rem;
+}
+
+/* On phones the info card sits below the map instead of floating on
+   top of it, so it never covers the whole thing. */
+@media (max-width: 600px) {
+  .map-info-card {
+    position: static;
+    width: 100%;
+    max-width: none;
+    max-height: none;
+    margin-top: 16px;
+  }
+}
+
+
+/* ====================================================================
+   CONTENT ADDITIONS (added when real content was filled in)
+   ==================================================================== */
+
+/* Long-form report text (Terran readiness report) */
+.report-essay p {
+  margin-bottom: 18px;
+  line-height: 1.75;
+}
+.report-essay p:last-child {
+  margin-bottom: 0;
+}
+.report-byline {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ice-blue);
+  margin-bottom: 20px;
+}
+
+/* Memo header on the military briefing */
+.memo-meta {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px 16px;
+  padding: 16px 20px;
+  margin: 8px 0 24px;
+  background-color: var(--dark-navy);
+  border-radius: var(--card-radius);
+  font-size: 0.95rem;
+}
+.memo-meta dt {
+  color: var(--accent-warm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding-top: 2px;
+}
+.memo-meta dd {
+  color: var(--text-light);
+}
+.briefing-list {
+  padding-left: 20px;
+  list-style: disc;
+}
+.briefing-list li {
+  display: list-item;
+  margin-bottom: 10px;
+}
+.briefing-list li:last-child {
+  margin-bottom: 0;
+}
+.briefing-list.numbered {
+  list-style: decimal;
+}
+.briefing-closing {
+  border-top: 1px solid var(--blue-gray);
+  margin-top: 24px;
+  padding-top: 20px;
+  font-style: italic;
+}
+
+/* Flyer / infographic images */
+.flyer-stack {
+  display: grid;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.flyer-img,
+.kemmer-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--card-radius);
+  box-shadow: 0 6px 24px rgba(11, 23, 37, 0.25);
+}
+.kemmer-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.kemmer-gallery figure {
+  margin: 0;
+}
+
+/* Story of the First Shadow */
+.story-box .story-text p {
+  margin-bottom: 14px;
+  line-height: 1.75;
+}
+.story-adage {
+  margin: 22px 0;
+  padding: 14px 22px;
+  border-left: 3px solid var(--accent-warm);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--deep-blue);
+}
+
+/* Bulleted lists inside survival cards */
+.survival-card ul {
+  padding-left: 18px;
+  list-style: disc;
+}
+.survival-card li {
+  display: list-item;
+  margin-bottom: 8px;
+}
+.survival-card li:last-child {
+  margin-bottom: 0;
+}
+
+/* Travel guide intro + sights lists */
+.guide-intro {
+  max-width: 820px;
+  margin-bottom: 28px;
+}
+.compare-column .guide-lead {
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .memo-meta { grid-template-columns: 1fr; }
+}
+
+/* Light cards placed inside dark sections (travel guide) keep dark text */
+.section-dark .compare-column {
+  color: var(--text-color);
+}
+.section-dark .compare-column h4 {
+  color: var(--deep-blue);
+}
+
+
+/* Image-based map: keep the portrait map a sensible size and make pins/labels readable on the light artwork */
+.map-wrap {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.map-pin-shape {
+  stroke: var(--dark-navy);
+  stroke-width: 2;
+}
+.map-pin-label {
+  fill: var(--dark-navy);
+  stroke: #ffffff;
+  stroke-width: 4px;
+  paint-order: stroke;
+  font-size: 18px;
+}
+
+
+/* ====================================================================
+   OLD NEWSPAPER THEME
+   Aged paper, ink, double-rule borders, smudges and stains.
+   (Everything below overrides the earlier dark/blue look.)
+   ==================================================================== */
+:root {
+  --ink:        #2a1f14;
+  --ink-soft:   #4a3a28;
+  --paper:      #ecdfbf;
+  --paper-light:#f4ebd2;
+  --paper-dark: #ddcb9f;
+  --rust:       #8a3b22;
+
+  --dark-navy:  #2a1f14;
+  --deep-blue:  #3a2c1c;
+  --blue-gray:  #6b5a45;
+  --ice-blue:   #8a3b22;
+  --pale-ice:   #f1e6c8;
+  --light-gray: #cdbb95;
+  --accent-warm:#8a3b22;
+  --white:      #f8f1dc;
+  --text-color: #2a1f14;
+  --text-light: #2a1f14;
+  --card-radius: 2px;
+  --font-heading: 'Playfair Display', 'Times New Roman', serif;
+  --font-body:    'Old Standard TT', Georgia, 'Times New Roman', serif;
+}
+
+html { background-color: #cdb88a; }
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-size: 1.05rem;
+  background-image:
+    radial-gradient(ellipse 340px 260px at 6% 14%,  rgba(110,70,25,.22), transparent 70%),
+    radial-gradient(ellipse 420px 300px at 96% 34%, rgba(95,55,20,.20), transparent 70%),
+    radial-gradient(ellipse 380px 240px at 12% 72%, rgba(100,60,20,.18), transparent 70%),
+    radial-gradient(ellipse 460px 320px at 88% 92%, rgba(90,50,15,.22), transparent 70%),
+    radial-gradient(ellipse 200px 140px at 50% 48%, rgba(120,80,30,.10), transparent 70%);
+  background-attachment: fixed;
+}
+
+/* Full-screen paper grain, coffee stains and darkened edges (clicks pass through) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0 0.08  0 0 0 0.55 -0.12'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.006' numOctaves='4' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36  0 0 0 0 0.22  0 0 0 0 0.08  0 0 0 0.9 -0.38'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>"),
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 52%, rgba(70,40,10,.38) 100%);
+  background-size: 320px 320px, 900px 900px, 100% 100%;
+  mix-blend-mode: multiply;
+  opacity: .85;
+}
+/* A few ink smudges and a ring stain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 70px at 90% 14%, rgba(40,25,10,.10), transparent 70%),
+    radial-gradient(ellipse 120px 40px at 8% 46%, rgba(40,25,10,.09), transparent 75%),
+    radial-gradient(circle 90px at 80% 70%, transparent 58px, rgba(110,70,25,.16) 62px, rgba(110,70,25,.05) 70px, transparent 74px),
+    radial-gradient(ellipse 160px 50px at 30% 94%, rgba(40,25,10,.10), transparent 75%);
+}
+
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); color: var(--ink); }
+
+/* ---------- Sections: all paper, no dark blocks ---------- */
+.section-dark, .conclusion, .mission, .sources, .quick-nav, .page-header, .footer {
+  background-color: transparent;
+  color: var(--ink);
+}
+.section-dark .eyebrow, .eyebrow, .page-header .eyebrow, .hero-content .eyebrow {
+  color: var(--rust);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.section-title { font-weight: 900; text-transform: none; }
+.subsection-title {
+  border-bottom: 4px double var(--ink);
+  border-top: 1px solid var(--ink);
+  padding: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 1.35rem;
+  display: block;
+  text-align: center;
+}
+.placeholder-text, .section-dark .placeholder-text {
+  color: var(--rust);
+  font-style: italic;
+  opacity: .85;
+}
+
+/* ---------- Masthead (navbar) ---------- */
+.navbar {
+  background-color: var(--paper-light);
+  border-bottom: 4px double var(--ink);
+  box-shadow: 0 6px 14px rgba(60,35,10,.25);
+}
+.nav-inner { padding-top: 0; padding-bottom: 0; height: 70px; }
+.nav-logo-main {
+  font-family: 'UnifrakturCook', 'Playfair Display', serif;
+  font-size: 1.9rem;
+  letter-spacing: 1px;
+  color: var(--ink);
+  font-weight: 700;
+}
+.nav-logo-sub {
+  color: var(--rust);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: .62rem;
+}
+.nav-links a {
+  color: var(--ink);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .8rem;
+  font-weight: 700;
+}
+.nav-links a:hover, .nav-links a.current { color: var(--rust); }
+.nav-links a.current { border-bottom: 2px solid var(--rust); }
+.nav-toggle span { background-color: var(--ink); }
+.quick-nav { top: 74px; background-color: var(--paper-dark); border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); }
+.quick-nav-links a {
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: .75rem;
+  font-weight: 700;
+}
+.quick-nav-links a:hover { background: var(--ink); color: var(--paper-light); border-color: var(--ink); }
+
+/* ---------- Page headers + hero as front-page banners ---------- */
+.page-header {
+  border-bottom: 4px double var(--ink);
+  margin: 0 32px;
+  padding: 48px 0 40px;
+  position: relative;
+}
+.page-header::before {
+  content: "";
+  display: block;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  height: 5px;
+  margin-bottom: 36px;
+}
+.page-header h1 {
+  font-size: 3.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ink);
+}
+.page-header-subtitle { color: var(--ink-soft); font-style: italic; }
+
+.hero { color: var(--ink); border-bottom: 4px double var(--ink); }
+.hero-image {
+  background: linear-gradient(135deg, #cdb88a 0%, #e3d3a8 55%, #f1e6c8 100%);
+  border: none;
+  color: var(--blue-gray);
+  opacity: 1;
+}
+.hero-overlay { background-color: transparent; }
+.hero-content {
+  background: rgba(244,235,210,.88);
+  border: 5px double var(--ink);
+  padding: 44px 40px;
+  box-shadow: 0 10px 30px rgba(60,35,10,.35);
+}
+.hero-content h1 {
+  font-family: 'UnifrakturCook', 'Playfair Display', serif;
+  color: var(--ink);
+  font-weight: 700;
+  text-shadow: none;
+}
+.hero-subtitle { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- Buttons ---------- */
+.btn-primary, .btn-small {
+  background-color: var(--ink);
+  color: var(--paper-light);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.btn-primary:hover, .btn-small:hover { background-color: var(--rust); border-color: var(--rust); color: var(--paper-light); }
+
+/* ---------- Cards: boxed with double rules ---------- */
+.category-card, .report-card, .destination-card, .survival-card,
+.compare-column, .belief-card, .story-box, .credit-card, .callout-box,
+.memo-meta, .map-wrap, .map-info-card {
+  background-color: rgba(246,238,215,.82);
+  color: var(--ink);
+  border: 4px double var(--ink);
+  border-radius: 2px;
+  box-shadow: inset 0 0 36px rgba(120,80,30,.22), 3px 4px 0 rgba(60,35,10,.18);
+}
+.category-card { border-top-width: 4px; }
+.category-card:hover { border-color: var(--rust); transform: translateY(-3px); }
+.category-number { color: var(--rust); font-family: 'UnifrakturCook', serif; }
+.report-card h3 {
+  color: var(--ink);
+  font-size: 1.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  border-top: 1px solid var(--ink);
+  border-bottom: 3px double var(--ink);
+  padding: 12px 0;
+  margin-bottom: 22px;
+}
+.report-block h4, .report-findings h4, .section:not(.section-dark) .report-findings h4,
+.compare-column h4, .section-dark .compare-column h4, .callout-box h4,
+.belief-card h4, .survival-card h4 {
+  color: var(--rust);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.report-block { border-top: 1px solid var(--ink); padding-top: 12px; }
+.report-findings, .briefing-closing, .report-card hr { border-top: 1px solid var(--ink); }
+.intel-briefing { border-left: 4px double var(--ink); }
+.compare-column, .section-dark .compare-column { color: var(--ink); border-top: 4px double var(--ink); }
+.compare-karhide, .compare-orgoreyn { border-top-color: var(--ink); }
+.compare-list dt, .map-info-label, .story-box h5, .recipe-text h5, .belief-block h5 { color: var(--rust); font-family: var(--font-heading); }
+.memo-meta { border-width: 3px; }
+.memo-meta dt { color: var(--rust); }
+.memo-meta dd { color: var(--ink); }
+.callout-box { background-color: rgba(221,203,159,.7); }
+.story-adage { color: var(--ink); border-left-color: var(--rust); }
+.report-byline { color: var(--rust); }
+
+/* Newspaper columns for the long report text */
+.report-essay {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule: 1px solid var(--ink);
+  text-align: justify;
+  hyphens: auto;
+}
+.report-essay p { margin-bottom: 14px; line-height: 1.65; break-inside: auto; }
+.report-essay p:first-child::first-letter {
+  font-family: 'UnifrakturCook', 'Playfair Display', serif;
+  float: left;
+  font-size: 4.2rem;
+  line-height: .85;
+  padding: 6px 10px 0 0;
+  color: var(--rust);
+}
+.story-text { text-align: justify; hyphens: auto; }
+.story-text p:first-child::first-letter {
+  font-family: 'UnifrakturCook', 'Playfair Display', serif;
+  float: left;
+  font-size: 3.6rem;
+  line-height: .85;
+  padding: 6px 10px 0 0;
+  color: var(--rust);
+}
+.briefing-list li, .compare-list dd { line-height: 1.55; }
+
+/* ---------- Images: printed-photo frames with a sepia wash ---------- */
+.destination-image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;
+  border-bottom: 3px double var(--ink);
+  filter: sepia(.35) contrast(1.05);
+}
+.flyer-img, .kemmer-img {
+  border: 3px double var(--ink);
+  border-radius: 0;
+  padding: 6px;
+  background: var(--paper-light);
+  box-shadow: 4px 5px 0 rgba(60,35,10,.22);
+  filter: sepia(.18) saturate(.9);
+}
+.image-placeholder {
+  background: linear-gradient(135deg, #cdb88a 0%, #e0cf9f 55%, #efe3c2 100%);
+  border: 2px dashed var(--ink);
+  border-radius: 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.destination-body h4 { color: var(--ink); font-size: 1.3rem; text-transform: none; letter-spacing: 0; }
+.destination-region { color: var(--rust); font-weight: 700; }
+.survival-card { border: 4px double var(--ink); }
+
+/* ---------- Conclusion / footer / sources ---------- */
+.conclusion { border-top: 4px double var(--ink); border-bottom: 4px double var(--ink); margin: 0 32px; }
+.conclusion, .conclusion .essential-question { color: var(--ink); }
+.conclusion-title { color: var(--ink); }
+.mission .essential-question { color: var(--ink); }
+.footer { border-top: 4px double var(--ink); color: var(--ink-soft); margin: 0 32px; }
+.footer a, .footer-links a { color: var(--ink); text-transform: uppercase; letter-spacing: 2px; font-size: .75rem; }
+.footer a:hover { color: var(--rust); }
+.footer-credit, .footer p { color: var(--ink-soft); }
+.sources-list li { border-bottom: 1px dotted var(--ink); }
+
+/* ---------- Map ---------- */
+.map-legend, .map-legend span, .map-toolbar, .map-edit-toggle { color: var(--ink); }
+.btn-map-control {
+  background-color: var(--paper-light);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+}
+.btn-map-control:hover { background-color: var(--ink); color: var(--paper-light); }
+.map-wrap { background-color: var(--paper-light); padding: 6px; }
+.map-info-card { background-color: var(--paper-light); }
+.map-info-close, .map-info-chapter, .map-info-region { color: var(--rust); }
+.map-info-close:hover { color: var(--ink); }
+.map-info-chapter { border-top-color: var(--ink); }
+.map-edit-readout { background: var(--paper-light); color: var(--ink); border: 2px solid var(--ink); }
+.map-pin-label { stroke: var(--paper-light); }
+
+@media (max-width: 900px) {
+  .report-essay { column-count: 1; }
+  .nav-links { background-color: var(--paper-light); border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); }
+  .page-header, .conclusion, .footer { margin: 0 14px; }
+  .page-header h1 { font-size: 2.3rem; }
+}
+
+.category-card p, .report-card p, .destination-body p, .survival-card li, .hero p { color: var(--ink-soft); }
+.destination-body p.destination-region { color: var(--rust); }
+body::before { opacity: .7; }
+
+.poster-image { aspect-ratio: auto; width: auto; max-width: 100%; border: 3px double var(--ink); }

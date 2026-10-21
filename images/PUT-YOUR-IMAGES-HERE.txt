@@ -1,0 +1,18 @@
+Put your project photos in this folder using these file names,
+then follow the instructions in index.html (search for "image-placeholder")
+to swap each placeholder box for a real <img> tag.
+
+Suggested file names (used in the HTML comments):
+
+  gethen-hero.jpg          -> hero banner at the top of the page
+  food.jpg                 -> photo of the finished Gethenian dish
+  kemmer-diagram.jpg       -> your kemmer cycle diagram
+  destination-1.jpg        -> destination card 1
+  destination-2.jpg        -> destination card 2
+  destination-3.jpg        -> destination card 3
+  poster-1.jpg              -> tourism poster 1
+  poster-2.jpg              -> tourism poster 2
+  poster-3.jpg              -> tourism poster 3
+
+You can use any file names you want — just make sure the "src" in the
+<img> tag matches the file name exactly.

@@ -1596,7 +1596,6 @@ body::after {
   background-image:
     radial-gradient(circle 70px at 90% 14%, rgba(40,25,10,.10), transparent 70%),
     radial-gradient(ellipse 120px 40px at 8% 46%, rgba(40,25,10,.09), transparent 75%),
-    radial-gradient(circle 90px at 80% 70%, transparent 58px, rgba(110,70,25,.16) 62px, rgba(110,70,25,.05) 70px, transparent 74px),
     radial-gradient(ellipse 160px 50px at 30% 94%, rgba(40,25,10,.10), transparent 75%);
 }
 
@@ -1875,3 +1874,177 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); color: var(--ink); }
 body::before { opacity: .7; }
 
 .poster-image { aspect-ratio: auto; width: auto; max-width: 100%; border: 3px double var(--ink); }
+
+/* Recipe: real bullets/numbers and a printed-photo frame */
+.recipe-text ul { padding-left: 22px; list-style: disc; }
+.recipe-text ol { padding-left: 22px; list-style: decimal; }
+.recipe-text li { display: list-item; margin-bottom: 4px; }
+img.recipe-image {
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border: 3px double var(--ink);
+  padding: 6px;
+  background: var(--paper-light);
+  box-shadow: 4px 5px 0 rgba(60,35,10,.22);
+  filter: sepia(.15);
+}
+
+
+/* Survival guide + travel guide formatting for the longer text */
+.survival-grid { grid-template-columns: 1fr; }
+.survival-card h4 { font-size: 1.15rem; }
+.survival-card h5 {
+  margin: 18px 0 8px;
+  color: var(--rust);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: .85rem;
+}
+.survival-card p { line-height: 1.65; }
+.guide-sights { padding-left: 18px; list-style: disc; }
+.guide-sights li { display: list-item; margin-bottom: 6px; }
+.kemmer-gallery { max-width: 860px; }
+.flyer-stack { max-width: 1040px; }
+.sources-list a { color: var(--rust); word-break: break-all; }
+
+
+/* ---- Hero photo ---- */
+img.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(.35) saturate(.9) contrast(1.02);
+}
+
+/* ---- Map text readable on paper ---- */
+.map-intro, .map-legend-item, .map-legend li { color: var(--ink); }
+
+/* ---- Government page extras ---- */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 36px auto;
+  max-width: 520px;
+  color: var(--rust);
+  font-size: 1.4rem;
+}
+.ornament-divider::before, .ornament-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 3px double var(--ink);
+}
+.pull-quote {
+  margin: 4px 0 26px;
+  padding: 16px 28px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.45rem;
+  line-height: 1.4;
+  color: var(--rust);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.memo-meta { position: relative; padding-right: 160px; }
+.report-stamp {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  width: 112px;
+  height: 112px;
+  margin-top: -56px;
+  transform: rotate(-9deg);
+  color: var(--rust);
+  opacity: .8;
+}
+@media (max-width: 900px) {
+  .memo-meta { padding-right: 20px; }
+  .report-stamp { display: none; }
+}
+
+/* ---- Story figure ---- */
+.story-figure {
+  float: right;
+  width: 44%;
+  margin: 4px 0 14px 24px;
+  padding: 6px;
+  background: var(--paper-light);
+  border: 3px double var(--ink);
+  box-shadow: 4px 5px 0 rgba(60,35,10,.22);
+}
+.story-figure img { display: block; width: 100%; height: auto; filter: sepia(.5) contrast(1.05); }
+.story-text::after { content: ""; display: block; clear: both; }
+@media (max-width: 700px) { .story-figure { float: none; width: 100%; margin: 0 0 16px; } }
+
+
+/* ---- Destinations inside the travel guide ---- */
+.guide-subtitle {
+  margin: 44px 0 20px;
+  padding: 8px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  border-top: 1px solid var(--ink);
+  border-bottom: 3px double var(--ink);
+}
+
+
+/* ---- Recipe instructions: full-width step cards ---- */
+.recipe-steps-title {
+  margin: 36px 0 18px;
+  padding: 8px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  border-top: 1px solid var(--ink);
+  border-bottom: 3px double var(--ink);
+}
+.recipe-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  counter-reset: step;
+}
+.recipe-steps li {
+  counter-increment: step;
+  display: block;
+  margin: 0;
+  padding: 10px 10px 14px;
+  background: rgba(246,238,215,.82);
+  border: 3px double var(--ink);
+  box-shadow: inset 0 0 24px rgba(120,80,30,.18), 3px 4px 0 rgba(60,35,10,.18);
+}
+.recipe-steps li::before {
+  content: "Step " counter(step);
+  display: block;
+  margin: 10px 4px 4px;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+.recipe-steps li span { display: block; margin: 0 4px; line-height: 1.5; }
+.step-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--ink);
+  filter: sepia(.2);
+}
+.recipe-steps li { display: flex; flex-direction: column; }
+.recipe-steps li .step-photo { order: -1; }
+@media (max-width: 900px) { .recipe-steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .recipe-steps { grid-template-columns: 1fr; } }
+.recipe-steps li.no-photo { align-self: start; }

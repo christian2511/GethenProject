@@ -26,8 +26,7 @@
      for a NEW pin: scroll to the map, turn on "Edit Mode", and click
      the spot on the map you want — the x/y will show underneath it.
    - description / whyVisit / tip -> short text for the info card.
-     These are draft text for you to fact-check and rewrite — a few
-     entries say "[Verify chapter]" where the chapter wasn't given.
+     
    ==================================================================== */
 const PINS = [
   {
@@ -35,7 +34,7 @@ const PINS = [
     region: "Karhide",
     type: "city",
     x: 434, y: 636,
-    description: "NA",
+    description: "The capital city of the kingdom of Karhide and the residence of King Argaven (Le Guin 5–6). It is an ancient, dense, and sprawling city where much of Karhide's complex political maneuvering and court politics take place (Le Guin 5–14).",
     chapter: "Chapter 1"
   },
   {
@@ -43,7 +42,7 @@ const PINS = [
     region: "Karhide",
     type: "sacred",
     x: 619, y: 457,
-    description: "NA",
+    description: "A remote Handdara retreat where the Foretellers live and practice.",
     chapter: "Chapter 5"
   },
   {
@@ -51,7 +50,7 @@ const PINS = [
     region: "Orgoreyn",
     type: "city",
     x: 262, y: 576,
-    description: " NA",
+    description: "The large, bureaucratic capital city of Orgoreyn (Le Guin 112). It serves as the seat of the Thirty-Three Commensals who rule the country and represents Orgoreyn's highly ordered, collective, and state-controlled society (Le Guin 112–115).",
     chapter: "Chapter 10"
   },
   {
@@ -59,16 +58,14 @@ const PINS = [
     region: "Orgoreyn",
     type: "dangerous",
     x: 197, y: 222,
-    description: " NA",
-    
-    chapter: "[Verify chapter]"
+    description: "A labor camp in Orgoreyn, officially called a voluntary farm."
   },
   {
     name: "The Gobrin Ice",
     region: "The Ice",
     type: "landmark",
     x: 274, y: 70,
-    description: "NA",
+    description: "A vast glacier in northern Gethen that Genly Ai and Estraven cross together.",
     chapter: "Chapter 15"
   },
   {
@@ -76,16 +73,14 @@ const PINS = [
     region: "Disputed Border",
     type: "landmark",
     x: 394, y: 298,
-    description: "NA",
-    chapter: "[Verify chapter]"
+    description: "A contested territory along the border between the nations of Karhide and Orgoreyn (Le Guin 100). Disputes over ownership of this fertile region fuel political strain and border skirmishes between the two countries throughout the novel (Le Guin 100–102)."
   },
   {
     name: "Rer",
     region: "Karhide",
     type: "city",
     x: 678, y: 622,
-    description: "NA",
-    chapter: "[Verify chapter]"
+    description: "The old capital of Karhide."
   }
 ];
 
@@ -220,7 +215,8 @@ function openInfoCard(pin) {
   infoName.textContent = pin.name;
   infoRegion.textContent = pin.region;
   infoDescription.textContent = pin.description;
-  infoChapter.textContent = pin.chapter;
+  infoChapter.textContent = pin.chapter || "";
+  infoChapter.hidden = !pin.chapter;
   infoCard.hidden = false;
 }
 

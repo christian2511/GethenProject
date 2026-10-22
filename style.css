@@ -1586,19 +1586,6 @@ body::before {
   mix-blend-mode: multiply;
   opacity: .85;
 }
-/* A few ink smudges and a ring stain */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle 70px at 90% 14%, rgba(40,25,10,.10), transparent 70%),
-    radial-gradient(ellipse 120px 40px at 8% 46%, rgba(40,25,10,.09), transparent 75%),
-    radial-gradient(ellipse 160px 50px at 30% 94%, rgba(40,25,10,.10), transparent 75%);
-}
-
 h1, h2, h3, h4, h5 { font-family: var(--font-heading); color: var(--ink); }
 
 /* ---------- Sections: all paper, no dark blocks ---------- */

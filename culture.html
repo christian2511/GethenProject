@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,7 @@
 </head>
 <body>
 
-  <!-- ================================================================
-       NAVIGATION BAR — same on every page. "current" marks this page.
-       ================================================================ -->
+  <!-- NAVIGATION BAR -->
   <header class="navbar">
     <div class="nav-inner">
 
@@ -39,10 +38,7 @@
     </div>
   </header>
 
-
-  <!-- ================================================================
-       PAGE HEADER
-       ================================================================ -->
+  <!-- PAGE HEADER -->
   <section class="page-header">
     <div class="container">
       <p class="eyebrow">ANTHROPOLOGICAL DOCUMENTS</p>
@@ -51,10 +47,7 @@
     </div>
   </section>
 
-
-  <!-- ================================================================
-       QUICK NAV — jump links to the sections further down THIS page.
-       ================================================================ -->
+  <!-- QUICK NAVIGATION -->
   <nav class="quick-nav">
     <ul class="container quick-nav-links">
       <li><a href="#comparison">Karhide vs Orgoreyn</a></li>
@@ -65,55 +58,53 @@
     </ul>
   </nav>
 
-
-
-  <!-- ================================================================
-       ================================================================
-       CULTURE SECTION
-       Contains: Karhide vs Orgoreyn, Religion, Food, Kemmer, Stories
-       ================================================================
-       ================================================================ -->
+  <!-- CULTURE SECTION -->
   <section class="section">
     <div class="container">
 
-      <!-- ---------- KARHIDE VS ORGOREYN COMPARISON ---------- -->
+      <!-- KARHIDE VS ORGOREYN -->
       <div class="subsection" id="comparison">
         <h3 class="subsection-title">Karhide vs Orgoreyn</h3>
 
-        <!-- Change "grid-template-columns: 1fr 1fr;" in style.css
-             under COMPARISON TABLE to stack these differently -->
         <div class="flyer-stack">
-          <img src="images/karhide-orgoreyn-infographic.png" alt="Infographic comparing Karhide and Orgoreyn: Karhide is a feudal monarchy ruled by King Argaven XV and local domain lords, follows Handdara, has high individual freedom, the shifgrethor code of honor, local domain police and left Genly Ai confused; Orgoreyn is a bureaucratic state ruled by 33 commensals, follows Yomeshta, is heavily regulated, values state efficiency over personal pride, is a surveillance state run by the Sarf and work camps, and seemed welcoming but secretly dangerous and hollow." class="flyer-img">
+          <img
+            src="images/karhide-orgoreyn-infographic.png"
+            alt="Infographic comparing Karhide and Orgoreyn: Karhide is a feudal monarchy ruled by King Argaven XV and local domain lords, follows Handdara, has high individual freedom, the shifgrethor code of honor, local domain police and left Genly Ai confused; Orgoreyn is a bureaucratic state ruled by 33 commensals, follows Yomeshta, is heavily regulated, values state efficiency over personal pride, is a surveillance state run by the Sarf and work camps, and seemed welcoming but secretly dangerous and hollow."
+            class="flyer-img">
         </div>
       </div>
 
-
-      <!-- ---------- RELIGION: HANDDARA & YOMESH ---------- -->
+      <!-- RELIGION: HANDDARA & YOMESH -->
       <div class="subsection" id="religion">
         <h3 class="subsection-title">Faith on Gethen</h3>
 
         <div class="flyer-stack">
-          <img src="images/faith-1.png" alt="Flyer comparing the Handdara and the Yomesh Cult (Yomeshta): origins and influence, and beliefs and philosophy" class="flyer-img">
-          <img src="images/faith-2.png" alt="Flyer continued: religious practices and connection to Terran religions for the Handdara; religious structure and impact for the Yomesh Cult" class="flyer-img">
+          <img
+            src="images/faith-1.png"
+            alt="Flyer comparing the Handdara and the Yomesh Cult (Yomeshta): origins and influence, and beliefs and philosophy"
+            class="flyer-img">
+
+          <img
+            src="images/faith-2.png"
+            alt="Flyer continued: religious practices and connection to Terran religions for the Handdara; religious structure and impact for the Yomesh Cult"
+            class="flyer-img">
         </div>
       </div>
 
-
-      <!-- ---------- FOOD: TASTE OF GETHEN ---------- -->
+      <!-- FOOD: TASTE OF GETHEN -->
       <div class="subsection" id="food">
         <h3 class="subsection-title">Taste of Gethen</h3>
 
         <div class="recipe-layout">
 
-          <!-- ---------- FOOD PHOTO ----------
-               Replace like the hero image: put your photo in images/food.jpg,
-               delete the placeholder div, add:
-               <img src="images/food.jpg" alt="Photo of finished dish" class="recipe-image">
-               -------------------------------- -->
-          <img src="images/food.jpeg" alt="Photo of finished dish" class="recipe-image">
+          <img
+            src="images/food.jpeg"
+            alt="Photo of finished dish"
+            class="recipe-image">
 
           <div class="recipe-text">
             <h4>Fish Cakes!</h4>
+
             <p>A gethenian staple dish made with cold-water fish and local spices, it uses potatoes for most of the filing to create a hearty and flavorful meal!</p>
 
             <h5>Ingredients</h5>
@@ -129,40 +120,75 @@
               <li>Dill</li>
             </ul>
 
-
             <h5>Connection to the Novel</h5>
             <p>The fish cakes are a symbol of the resilience and resourcefulness of the Gethenians, who must make do with what they have in their harsh environment. They have access to seafoods and plants, making them able to cook a good like this one</p>
           </div>
         </div>
 
         <h4 class="recipe-steps-title">Instructions</h4>
+
         <ol class="recipe-steps">
-              <li><img src="images/recipe-step-1.jpg" alt="Potatoes in a pot on the stove" class="step-photo"><span>Bake the potatoes until tender.</span></li>
-              <li><img src="images/recipe-step-2.jpg" alt="Seasoned fish fillets cooking in a pan" class="step-photo"><span>Heat oil in a pan and cook the cold-water fish until flaky.</span></li>
-              <li><img src="images/recipe-step-3.jpg" alt="Cooked, flaked fish on a plate" class="step-photo"><span>Mix the fish with the spices and seasonings.</span></li>
-              <li><img src="images/recipe-step-4.jpg" alt="Mashed potato and chopped onion ready to mix" class="step-photo"><span>Mix all ingredients in a bowl to form cakes.</span></li>
-              <li><img src="images/recipe-step-5.jpg" alt="Fish cakes frying in a pan" class="step-photo"><span>Fry the fish cakes in oil until golden brown.</span></li>
-              <li><img src="images/recipe-step-6.jpg" alt="Finished fish cakes served on a plate" class="step-photo"><span>Serve hot and enjoy!.</span></li>
+          <li>
+            <img src="images/recipe-step-1.jpg" alt="Potatoes in a pot on the stove" class="step-photo">
+            <span>Bake the potatoes until tender.</span>
+          </li>
+          <li>
+            <img src="images/recipe-step-2.jpg" alt="Seasoned fish fillets cooking in a pan" class="step-photo">
+            <span>Heat oil in a pan and cook the cold-water fish until flaky.</span>
+          </li>
+          <li>
+            <img src="images/recipe-step-3.jpg" alt="Cooked, flaked fish on a plate" class="step-photo">
+            <span>Mix the fish with the spices and seasonings.</span>
+          </li>
+          <li>
+            <img src="images/recipe-step-4.jpg" alt="Mashed potato and chopped onion ready to mix" class="step-photo">
+            <span>Mix all ingredients in a bowl to form cakes.</span>
+          </li>
+          <li>
+            <img src="images/recipe-step-5.jpg" alt="Fish cakes frying in a pan" class="step-photo">
+            <span>Fry the fish cakes in oil until golden brown.</span>
+          </li>
+          <li>
+            <img src="images/recipe-step-6.jpg" alt="Finished fish cakes served on a plate" class="step-photo">
+            <span>Serve hot and enjoy!.</span>
+          </li>
         </ol>
       </div>
 
-
-      <!-- ---------- PHYSIOLOGY: UNDERSTANDING KEMMER ---------- -->
+      <!-- PHYSIOLOGY: UNDERSTANDING KEMMER -->
       <div class="subsection" id="kemmer">
         <h3 class="subsection-title">Understanding Kemmer</h3>
 
+        <h4>Gethenian Physiology</h4>
+        <p>
+          Unlike Terrans, Gethenians do not have a permanent male or female sex.
+          For most of their 26-to-28-day cycle, they remain in somer, where they
+          are sexually inactive. During kemmer, their bodies develop male or
+          female sexual characteristics, allowing them to reproduce. A Gethenian
+          can be a father in one cycle and a mother in another (Le Guin 90–94).
+          Gethenians also have shorter, stockier bodies, with shorter arms and
+          legs and more body fat, which helps them survive the extreme cold of
+          their planet (Le Guin 186).
+        </p>
+
         <div class="kemmer-gallery">
           <figure>
-            <img src="images/kemmer-cycle.png" alt="Diagram of the Kemmer cycle: Somer, Kemmer, Thorharmen, Secher" class="kemmer-img">
+            <img
+              src="images/kemmer-cycle.png"
+              alt="Diagram of the Kemmer cycle: Somer, Kemmer, Thorharmen, Secher"
+              class="kemmer-img">
           </figure>
+
           <figure>
-            <img src="images/kemmer-info.png" alt="Infographic explaining the 26 to 28 day Gethenian kemmer cycle: Somer, Kemmer, Secher, and Thokemmer" class="kemmer-img">
+            <img
+              src="images/kemmer-info.png"
+              alt="Infographic explaining the 26 to 28 day Gethenian kemmer cycle: Somer, Kemmer, Secher, and Thokemmer"
+              class="kemmer-img">
           </figure>
         </div>
       </div>
 
-
-      <!-- ---------- CULTURAL NARRATIVE: STORIES OF GETHEN ---------- -->
+      <!-- CULTURAL NARRATIVE: STORIES OF GETHEN -->
       <div class="subsection" id="stories">
         <h3 class="subsection-title">Stories of Gethen</h3>
 
@@ -170,18 +196,32 @@
           <h4>The Story of the First Shadow</h4>
 
           <h5>The Story</h5>
+
           <div class="story-text">
             <figure class="story-figure">
-              <img src="images/story-figure.jpg" alt="A lone figure in a hooded jacket walking across wind-swept snow, backlit by a pale sun, casting a long shadow">
+              <img
+                src="images/story-figure.jpg"
+                alt="A lone figure in a hooded jacket walking across wind-swept snow, backlit by a pale sun, casting a long shadow">
             </figure>
+
             <p>As long as there is the first Hearth in Karhide and the first Soveit recorded ages, the world was only blinding white. There was no darkness, nor shadow, nor distance—only the constancy of daylight on snow.</p>
+
             <p>The people lived in terror at that time, for they could not hide when everything was exposed all at once, no one could have a secret, no one could have repose, and no one could tell where they finished and another started.</p>
+
             <p>Two, too much, ourselves, the grey life slipping each other's grasp. Teth at this end, Heth at that, the white plain where they lost me.</p>
+
             <p>Teth moved toward the brightest sun—the one with the strongest light, the one that saw everything. But that light burned Teth's eyes until they saw nothing at all. And in the dark, he wandered into a deep crevasse and disappeared.</p>
+
             <p>Heth froze on the ice, she shut her eyes to avoid the glare of sky. She stayed sitting until the cold became part of her flesh, pulled her cloak around her, and darkened a pale sky with a tiny black shadow.</p>
+
             <p>Within that tiny shadow, she could breathe. The air grew warmer. When she opened her eyes, she discovered that the shadow wasn't concealing the truth, but it was shaping the light that surrounded it. She came to understand that without the shadow, the white ice had nothing to cast a shadow onto.</p>
+
             <p>On her return to her people, Heth told them this adage, which is the basis of all Shifgrethor and Handdara wisdom.</p>
-            <blockquote class="story-adage">Light is the left hand of darkness, and darkness the right hand of light. Two are one, life and death, lying together like lovers in kemmer, like hands joined, like the end and the way.</blockquote>
+
+            <blockquote class="story-adage">
+              Light is the left hand of darkness, and darkness the right hand of light. Two are one, life and death, lying together like lovers in kemmer, like hands joined, like the end and the way.
+            </blockquote>
+
             <p>Ever after that, the Karhidish people never wanted total exposure; they never demanded all the answers. They came to treasure the shadow—the unspoken word, the preserved dignity, the muted distance between two people allowing them to live together in harmony.</p>
           </div>
         </div>
@@ -190,9 +230,7 @@
     </div>
   </section>
 
-<!-- ================================================================
-       FOOTER
-       ================================================================ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <ul class="footer-links">
@@ -202,6 +240,7 @@
         <li><a href="travel.html">Travel</a></li>
         <li><a href="sources.html">Sources</a></li>
       </ul>
+
       <p>The Ekumen Report &middot; Gethen Field Study &middot; Student Project</p>
     </div>
   </footer>
